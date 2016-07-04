@@ -1,10 +1,6 @@
-FROM debian:wheezy
-MAINTAINER MeteorHacks Pvt Ltd.
+FROM kayrules/meteord:base
+MAINTAINER KayRules.
 
-ENV METEORD_DIR /opt/meteord
-COPY scripts $METEORD_DIR
+COPY scripts/rebuild_bcrypt.sh $METEORD_DIR/rebuild_bcrypt.sh
 
-RUN bash $METEORD_DIR/init.sh
-
-EXPOSE 80
-ENTRYPOINT bash $METEORD_DIR/run_app.sh
+RUN bash $METEORD_DIR/rebuild_bcrypt.sh
